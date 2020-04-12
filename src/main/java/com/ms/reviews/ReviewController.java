@@ -29,8 +29,8 @@ public class ReviewController {
 		return new ResponseEntity<Review>(savedReview, HttpStatus.OK);
 		
 	}
-	@GetMapping(consumes = "application/json")
-	public ResponseEntity<List<Review>> findAll(@PathVariable("productId") Integer productId) {
-		return new ResponseEntity<List<Review>>(reviewRepository.findReviews(productId), HttpStatus.OK);
-	}	
+	@GetMapping(produces = "application/json")
+	public List<Review> findAll(@PathVariable("productId") Integer productId) {
+		return reviewRepository.findReviews(productId);
+	}
 }
